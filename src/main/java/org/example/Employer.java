@@ -3,39 +3,39 @@ package org.example;
 import java.util.Objects;
 
 public class Employer {
-        private Person person;
-        private String appointment;
-        private String salary;
+    private Person person;
+    private String appointment;
+    private String salary;
 
-            public Employer(Person person, String appointment, String salary) {
-                this.person = person;
-                this.appointment = appointment;
-                this.salary = salary;
-            }
+    public Employer(Person person, String appointment, String salary) {
+        this.person = person;
+        this.appointment = appointment;
+        this.salary = salary;
+    }
 
-        public Person getPerson() {
-            return person;
-        }
+    public Person getPerson() {
+        return person;
+    }
 
-        public void setPerson(Person person) {
-            this.person = person;
-        }
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
-        public String getAppointment() {
-            return appointment;
-        }
+    public String getAppointment() {
+        return appointment;
+    }
 
-        public void setAppointment(String appointment) {
-            this.appointment = appointment;
-        }
+    public void setAppointment(String appointment) {
+        this.appointment = appointment;
+    }
 
-        public String getSalary() {
-            return salary;
-        }
+    public String getSalary() {
+        return salary;
+    }
 
-        public void setSalary(String salary) {
-            this.salary = salary;
-        }
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
 
     @Override
     public boolean equals(Object o) {
