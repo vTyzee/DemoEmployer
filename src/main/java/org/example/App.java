@@ -19,6 +19,7 @@ public class App {
             System.out.println("1. Добавить работника");
             System.out.println("2. Список всех работников");
             System.out.println("3. Работники по имени и фамилии");
+            System.out.println("4: Редактировать запись");
             System.out.print("Выберите задачу: ");
 
             int task = scanner.nextInt();
@@ -37,6 +38,9 @@ public class App {
                     break;
                 case 3:
                     employerManage.findEmployeeByName(scanner); // Вызываем метод для поиска по имени
+                    break;
+                case 4:
+                    employerManage.editEmployee(scanner); // Вызываем метод для редактироние
                     break;
                 default:
                     System.out.println("Ошибка: неверный номер");

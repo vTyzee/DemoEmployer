@@ -13,22 +13,33 @@ public class Employer {
         this.salary = salary;
     }
 
+    // Геттеры
     public Person getPerson() {
         return person;
     }
-
 
     public String getAppointment() {
         return appointment;
     }
 
-
     public String getSalary() {
         return salary;
     }
 
+    // Сеттеры
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
+    public void setAppointment(String appointment) {
+        this.appointment = appointment;
+    }
 
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
+    // equals и hashCode для корректного сравнения объектов
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
