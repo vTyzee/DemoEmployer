@@ -17,25 +17,17 @@ public class Employer {
         return person;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
-    }
 
     public String getAppointment() {
         return appointment;
     }
 
-    public void setAppointment(String appointment) {
-        this.appointment = appointment;
-    }
 
     public String getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
-        this.salary = salary;
-    }
+
 
     @Override
     public boolean equals(Object o) {

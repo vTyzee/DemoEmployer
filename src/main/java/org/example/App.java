@@ -1,15 +1,15 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.example.manager.EmployerManage;
+
 import java.util.Scanner;
 
 public class App {
-    private final List<Employer> employers = new ArrayList<>();
-
     public void run() {
+        EmployerManage employerManage = new EmployerManage(); // Создаем объект для управления работниками
         boolean exitFromPro = false;
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("HR");
         System.out.println("---------------------");
 
@@ -22,7 +22,7 @@ public class App {
             System.out.print("Выберите задачу: ");
 
             int task = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); // Поглощаем символ новой строки
 
             switch (task) {
                 case 0:
@@ -30,123 +30,21 @@ public class App {
                     exitFromPro = true;
                     break;
                 case 1:
-                    createEmployee(scanner); // Call createEmployee method
+                    employerManage.createEmployee(scanner); // Вызываем метод для добавления работника
                     break;
                 case 2:
-                    listAllEmployees(); // Implement listing all employees
+                    employerManage.list(); // Вызываем метод для отображения списка работников
                     break;
                 case 3:
-                    findEmployeeByName(scanner); // Implement employee search by name
+                    employerManage.findEmployeeByName(scanner); // Вызываем метод для поиска по имени
                     break;
                 default:
-                    System.out.println("Error, not that number");
+                    System.out.println("Ошибка: неверный номер");
                     break;
             }
-        } while (exitFromPro);
+        } while (!exitFromPro);
 
         System.out.println("heat aega!");
         scanner.close();
-    }
-
-    private void createEmployee(Scanner scanner) {
-        System.out.println("Введите имя:");
-        String name = scanner.nextLine();
-
-        System.out.println("Введите фамилию:");
-        String surname = scanner.nextLine();
-
-        System.out.println("Введите дату рождения (дд мм гггг):");
-        int day = scanner.nextInt();
-        int month = scanner.nextInt();
-        int year = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline left by nextInt()
-
-        System.out.println("Введите должность:");
-        String appointment = scanner.nextLine();
-
-        System.out.println("Введите зарплату:");
-        String salary = scanner.nextLine();
-
-        System.out.println("Введите адрес:");
-        System.out.println("Город:");
-        String city = scanner.nextLine();
-        System.out.println("Maakond:");
-        String state = scanner.nextLine();
-        System.out.println("Индекс:");
-        String zip = scanner.nextLine();
-        System.out.println("Улица:");
-        String street = scanner.nextLine();
-        System.out.println("Дом:");
-        String house = scanner.nextLine();
-        System.out.println("Квартира:");
-        String room = scanner.nextLine();
-
-        Address address = new Address();
-        address.setCity(city);
-        address.setState(state);
-        address.setZip(zip);
-        address.setStreet(street);
-        address.setHouse(house);
-        address.setRoom(room);
-
-        Person person = new Person(name, surname, address,day, month, year);
-
-        Employer employer = new Employer(person, appointment, salary);
-
-        employers.add(employer); // Add the new employer to the list
-        System.out.println("Работник добавлен успешно!");
-    }
-
-    private void listAllEmployees() {
-        if (employers.isEmpty()) {
-            System.out.println("Нет работников в списке.");
-        } else {
-            for (Employer employer : employers) {
-                System.out.printf(
-                        "Имя: %s, Фамилия: %s, Возраст: %d, Должность: %s, Зарплата: %s, Адрес: %s, %s, %s, %s\n",
-                        employer.getPerson().getName(),
-                        employer.getPerson().getSurname(),
-                        employer.getPerson().getAge(),
-                        employer.getAppointment(),
-                        employer.getSalary(),
-                        employer.getPerson().getAddress().getCity(),
-                        employer.getPerson().getAddress().getStreet(),
-                        employer.getPerson().getAddress().getHouse(),
-                        employer.getPerson().getAddress().getState()
-                );
-            }
-        }
-    }
-
-    private void findEmployeeByName(Scanner scanner) {
-        System.out.println("Введите имя:");
-        String searchName = scanner.nextLine();
-
-        System.out.println("Введите фамилию:");
-        String searchSurname = scanner.nextLine();
-
-        boolean found = false;
-        for (Employer employer : employers) {
-            if (employer.getPerson().getName().equalsIgnoreCase(searchName) &&
-                    employer.getPerson().getSurname().equalsIgnoreCase(searchSurname)) {
-                System.out.printf(
-                        "Имя: %s, Фамилия: %s, Возраст: %d, Должность: %s, Зарплата: %s, Адрес: %s, %s, %s, %s\n",
-                        employer.getPerson().getName(),
-                        employer.getPerson().getSurname(),
-                        employer.getPerson().getAge(),
-                        employer.getAppointment(),
-                        employer.getSalary(),
-                        employer.getPerson().getAddress().getCity(),
-                        employer.getPerson().getAddress().getStreet(),
-                        employer.getPerson().getAddress().getHouse(),
-                        employer.getPerson().getAddress().getState()
-                );
-                found = true;
-            }
-        }
-
-        if (!found) {
-            System.out.println("Работник не найден.");
-        }
     }
 }
